@@ -1,0 +1,31 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="col-md-6">
+      {{# if login }}
+      <h3><a href="/user/profile">{{ title }}</a></h3>
+      {{ else }}
+      <h3><a href="/">{{ title }}</a></h3>
+      {{/if}}
+    </div>
+
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i> User Management <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <!-- the login variabe is passed in your app.js -->
+            {{# if login }}
+              <li><a href="/user/logout">Logout</a></li>
+            {{ else }}
+              <li><a href="/user/signup">Sign Up</a></li>
+              <li><a href="/user/signin">Sign In</a></li>
+            {{/if}}
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
