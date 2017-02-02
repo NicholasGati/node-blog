@@ -6,6 +6,10 @@
       <hr />
       <p>{{post.body}}</p>
       <br />
+
+      {{# if isImage }}
+      <img class="img-responsive" src="{{post.imagePath}}" alt="image">
+      {{/if}}
     {{/if}}
   </div>
 </div>

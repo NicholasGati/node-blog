@@ -20,7 +20,7 @@ router.get('/profile', isLoggedIn, (req, res, next) => {
     }
     let postMap = [];
     posts.forEach((p) => {
-      postMap.push({ id: p.id, body: p.body, title: p.title, user: req.user });
+      postMap.push({ id: p.id, body: p.body, title: p.title, user: req.user, imagePath: p.imagePath });
     });
     res.render("user/profile", {posts: postMap, user: req.user});
   });

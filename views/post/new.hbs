@@ -2,13 +2,18 @@
   <div class="col-md-4 col-md-offset-4">
     <h1>New Post</h1>
 
-    <form action="/post/create" method="post">
+    <form action="/post/create" method="post" enctype="multipart/form-data">
       <div class="form-group">
         <label for="title">Title</label>
         <input type="input" name="title" class="form-control">
 
+        <br/>
         <label for="postBody">Body</label>
         <textarea type="input" name="postBody" class="form-control"></textarea>
+        <br/>
+        <label for="image">Image</label>
+        <input type="file" name="image"/>
+
         <hr/>
         <button type="submit" class="btn btn-primary">Post</button>
       </div>
