@@ -1,8 +1,11 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+.no-scores-div {
+  margin-top: 175px;
+}
+.no-scores {
+  color: #ccc;
+  opacity: 0.5;
 }
 
-a {
-  color: #00B7FF;
+.posts {
+  height: 150px;
 }

@@ -9,7 +9,6 @@
       {{/if}}
     </div>
 
-
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
@@ -18,6 +17,8 @@
           <ul class="dropdown-menu">
             <!-- the login variabe is passed in your app.js -->
             {{# if login }}
+            <li><a href="/post/new">New Post</a></li>
+              <li><a href="/user/profile">Profile</a></li>
               <li><a href="/user/logout">Logout</a></li>
             {{ else }}
               <li><a href="/user/signup">Sign Up</a></li>

@@ -1,1 +1,11 @@
-<h1>Shows current post</h1>
+<div class="row">
+  <div class="col-md-5 col-md-offset-3 ">
+    {{# if post }}
+      <h1>{{post.title}}</h1>
+      <small>Posted on {{post.date_created}} by {{author}}.</small>
+      <hr />
+      <p>{{post.body}}</p>
+      <br />
+    {{/if}}
+  </div>
+</div>

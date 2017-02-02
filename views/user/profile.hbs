@@ -1,24 +1,26 @@
 <div class="row">
   <div class="col-md-12">
-    <p><a href="/score/edit">Score Page</a></p>
-    {{# if blogs }}
-      <h1>My Blog Posts</h1>
-      {{# each blogs }}
-          <div class="panel panel-default">
-            <div class="panel-body">
-              <ul class="list-group">
-                <li class="list-group-item">
-                  <h3>{{ this.title }}</h3>
-                  <small>{{ this.author }}</small>
-                </li>
-              </ul>
+    {{# if posts }}
+      <h1 class="text-center">My Posts</h1>
+      <hr />
+      {{# each posts }}
+          <div class="col-md-4">
+            <div>
+              <div class="panel-body">
+                <ul class="list-group">
+                  <li class="list-group-item posts">
+                    <h3><a href="/post/{{id}}/show">{{ this.title }}</a></h3>
+                    <small>By: {{ user.fname }} {{ user.lname }}</small>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
       {{/each}}
 
     {{ else }}
     <div class="no-scores-div">
-      <h1 class="no-scores text-center">You have no blogs.</h1>
+      <h1 class="no-scores text-center">You have no posts</h1>
     </div>
     {{/if}}
   </div>

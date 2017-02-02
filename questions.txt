@@ -1,0 +1,4 @@
+Client purchases website domain?
+Client creates a Heroku account?
+Client creates an Amazon Developer account and I set up S3 bucket?
+Separate prices for mLab MongoDB and Heroku.

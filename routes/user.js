@@ -9,19 +9,18 @@ router.use(csrfProtection);
 
 const Post = require("../models/post");
 const User = require("../models/user");
-
 /*
   * Logged In
 */
 router.get('/profile', isLoggedIn, (req, res, next) => {
-  Post.find({user: req._id}, (err, posts) => {
+  Post.find({_author: req.user._id}, (err, posts) => {
     if (err) {
       req.flash("error", err);
       return res.redirect("/");
     }
-    let postMap = {};
+    let postMap = [];
     posts.forEach((p) => {
-      postMap[user.id] = { email: user.email, _id: p.id, body: p.body, title: p.title };
+      postMap.push({ id: p.id, body: p.body, title: p.title, user: req.user });
     });
     res.render("user/profile", {posts: postMap, user: req.user});
   });
@@ -29,7 +28,7 @@ router.get('/profile', isLoggedIn, (req, res, next) => {
 
 // Edit/Delete
 router.get("/edit", isLoggedIn, (req, res, next) => {
-
+  res.render("user/edit", {user: req.user, csrfToken: req.csrfToken()});
 });
 
 router.post("/:id/delete", isLoggedIn, (req, res, next) => {
@@ -63,7 +62,7 @@ router.post('/signup', passport.authenticate("local.signup", {
   successRedirect: "/user/profile",
   failureRedirect: "/user/signup",
   failureFlash: true
-}, (req, res, next) => {
+}), (req, res, next) => {
   if (req.session.oldUrl) {
     const oldUrl = req.session.oldUrl;
     req.session.oldUrl = null;
@@ -71,7 +70,7 @@ router.post('/signup', passport.authenticate("local.signup", {
   } else {
     res.redirect("/user/profile");
   }
-}));
+});
 
 // Sign In
 router.get('/signin', isNotLoggedIn, (req, res, next) => {
@@ -91,6 +90,7 @@ router.post("/signin", passport.authenticate("local.signin", {
     res.redirect("/user/profile");
   }
 });
+
 router.use("/", isNotLoggedIn, (req, res, next) => {
   next();
 });

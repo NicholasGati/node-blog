@@ -41,10 +41,12 @@ passport.use("local.signup", new LocalStrategy({
 
     // if this user already exists
     if (user) {
-      return done(null, false, {messages: "Email is already in use."});
+      return done(null, false, {message: "Email is already in use."});
     }
 
     const newUser = new User();
+    newUser.fname = req.body.fname;
+    newUser.lname = req.body.lname;
     newUser.email = email;
     newUser.password = newUser.encryptPassword(password);
 
@@ -83,7 +85,7 @@ passport.use("local.signin", new LocalStrategy({
 
     // if this user already exists
     if (!user) {
-      return done(null, false, {messages: "No user found."});
+      return done(null, false, {message: "No user found."});
     }
 
     if (!user.validPassword(password)) {
